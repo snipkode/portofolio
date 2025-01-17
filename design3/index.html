@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alam Santiko Wibowo - Full Stack React Developer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #1e40af;
+            --text-color: #1f2937;
+            --light-text: #f3f4f6;
+            --background: #0f172a;
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(37, 99, 235, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+            }
+        }
+
+        body {
+            font-family: 'Inter', Arial, sans-serif;
+            line-height: 1.6;
+            background: var(--background);
+            color: var(--text-color);
+            overflow-x: hidden;
+        }
+
+        .tech-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: -1;
+            overflow: hidden;
+        }
+
+        .tech-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+            height: 2px;
+            width: 100%;
+            animation: slide 8s linear infinite;
+            opacity: 0.2;
+        }
+
+        .tech-line:nth-child(1) {
+            top: 15%;
+            animation-delay: 0s;
+        }
+
+        .tech-line:nth-child(2) {
+            top: 35%;
+            animation-delay: 2s;
+        }
+
+        .tech-line:nth-child(3) {
+            top: 55%;
+            animation-delay: 4s;
+        }
+
+        .tech-line:nth-child(4) {
+            top: 75%;
+            animation-delay: 6s;
+        }
+
+        /* Hero Section with Avatar */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--light-text);
+            padding: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .avatar-container {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 2rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--light-text);
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .avatar-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            position: relative;
+        }
+
+        section {
+            background: var(--card-bg);
+            margin: 2rem 0;
+            padding: 2rem;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        section:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Floating Action Button */
+        .fab {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 60px;
+            height: 60px;
+            background: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+            z-index: 1000;
+        }
+
+        .fab:hover {
+            transform: scale(1.1);
+            background: var(--secondary-color);
+        }
+
+        .fab i {
+            font-size: 32px;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            font-size: 1.8rem;
+        }
+
+        ul {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        li {
+            margin: 0.5rem 0;
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--secondary-color);
+        }
+
+        footer {
+            background: var(--text-color);
+            color: var(--light-text);
+            text-align: center;
+            padding: 1rem 0;
+            position: relative;
+            width: 100%;
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .skill-card {
+            background: rgba(37, 99, 235, 0.1);
+            padding: 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-card:hover {
+            background: rgba(37, 99, 235, 0.2);
+            transform: translateY(-2px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+
+            section {
+                padding: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .avatar-container {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+    <style>
+        .chat-widget {
+            position: fixed;
+            bottom: 80px;
+            right: 2rem;
+            width: 300px;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            transform: scale(0);
+            opacity: 0;
+            transform-origin: bottom right;
+            transition: all 0.3s ease;
+            z-index: 999;
+        }
+
+        .chat-widget.active {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .chat-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 1rem 1rem 0 0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .chat-header img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+        .chat-header-info h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .chat-header-info p {
+            margin: 0;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+
+        .chat-body {
+            padding: 1rem;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+
+        .chat-message {
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            border-radius: 0.5rem;
+            max-width: 80%;
+            position: relative;
+        }
+
+        .chat-message.received {
+            background: #f0f0f0;
+            margin-right: auto;
+        }
+
+        .chat-message.sent {
+            background: var(--primary-color);
+            color: white;
+            margin-left: auto;
+        }
+
+        .chat-bubble {
+            position: relative;
+            background: var(--primary-color);
+            color: var(--light-text);
+            padding: 1rem;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            max-width: 80%;
+        }
+
+        .chat-bubble::after {
+            content: '';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            border: 8px solid transparent;
+            border-right-color: var(--primary-color);
+            transform: translateY(-50%);
+        }
+
+        .chat-bubble.right {
+            margin-left: auto;
+            background: var(--secondary-color);
+        }
+
+        .chat-bubble.right::after {
+            left: auto;
+            right: -15px;
+            border-right-color: transparent;
+            border-left-color: var(--secondary-color);
+        }
+
+        
+
+        .chat-footer {
+            padding: 1rem;
+            border-top: 1px solid #eee;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #ddd;
+            border-radius: 1.5rem;
+            outline: none;
+        }
+
+        .chat-send {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s ease;
+        }
+
+        .chat-send:hover {
+            background: var(--secondary-color);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="tech-background">
+        <div class="tech-line"></div>
+        <div class="tech-line"></div>
+        <div class="tech-line"></div>
+        <div class="tech-line"></div>
+    </div>
+
+    <div class="hero">
+        <div class="avatar-container">
+            <img src="../images/avatar.png" alt="Alam Santiko Wibowo">
+        </div>
+        <h1>Alam Santiko Wibowo</h1>
+        <p>Full Stack React Developer Web & Mobile Apps</p>
+    </div>
+
+    <div class="container">
+        <section id="about">
+            <h2>Tentang Saya</h2>
+            <p>Alam Santiko Wibowo adalah seorang pengembang web dan aplikasi mobile yang berasal dari Cilacap, Jawa
+                Tengah, Indonesia. Ia dikenal sebagai <strong>Full Stack React Developer</strong> yang memiliki keahlian
+                dalam pengembangan aplikasi berbasis web dan mobile.</p>
+            <p>Dengan latar belakang dalam sistem versioning dan basis data, Alam memiliki kemampuan untuk bekerja
+                secara kolaboratif dalam tim serta membantu mewujudkan tujuan klien melalui solusi pemrograman yang
+                inovatif.</p>
+        </section>
+
+        <section id="skills">
+            <h2>Keahlian</h2>
+            <div class="skills-grid">
+                <div class="skill-card">
+                    <h3><i class="fas fa-code"></i> Front-End & Back-End</h3>
+                    <p>React, Node.js, dan pengembangan full-stack modern</p>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-code-branch"></i> Version Control</h3>
+                    <p>Git dan sistem versioning profesional</p>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-database"></i> Database</h3>
+                    <p>SQL dan NoSQL database management</p>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fas fa-laptop-code"></i> Development</h3>
+                    <p>Linux, Windows, dan MacOS</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="education">
+            <h2>Pendidikan</h2>
+            <p>Saat ini, Alam sedang menempuh pendidikan di bidang <strong>Teknologi</strong> dan
+                <strong>Hukum</strong>. Kombinasi pendidikan ini mencerminkan minatnya yang mendalam terhadap aspek
+                teknis dan regulasi dalam dunia digital.</p>
+        </section>
+
+        <section id="goals">
+            <h2>Cita-Cita</h2>
+            <p>Alam memiliki cita-cita untuk menjadi seorang <strong>Digital Forensic Expert</strong> di masa depan.
+                Dengan minatnya yang mendalam pada teknologi dan hukum, ia bercita-cita menggabungkan dua disiplin ini
+                untuk membantu mengungkap kebenaran dalam dunia digital dan memberikan kontribusi yang bermakna pada
+                keamanan siber.</p>
+        </section>
+
+        <section id="projects">
+            <h2>Proyek dan Karya</h2>
+            <p>Alam telah bekerja pada berbagai proyek teknologi yang mencakup pengembangan aplikasi mobile, situs web
+                dinamis, serta solusi berbasis cloud. Ia juga membuka peluang kerja sama dengan berbagai pihak yang
+                memiliki ide-ide inovatif untuk dikembangkan menjadi produk nyata.</p>
+        </section>
+
+        <section id="contact">
+            <h2>Kontak</h2>
+            <p>Untuk kolaborasi dan kerja sama proyek, Anda dapat menghubungi Alam melalui <a
+                    href="https://www.linkedin.com/in/alam-santiko-wibowo/" target="_blank">LinkedIn</a>.</p>
+        </section>
+    </div>
+
+    <!-- Chat Widget -->
+    <div class="chat-widget" id="chatWidget">
+        <div class="chat-header">
+            <img src="../images/avatar.png" style="width: 40px; height: 40px;" alt="Alam Santiko Wibowo">
+            <div class="chat-header-info">
+                <h3>Alam Santiko Wibowo</h3>
+                <p>Full Stack Developer</p>
+            </div>
+        </div>
+        <div class="chat-body">
+            <div class="chat-bubble">
+                Halo! Terima kasih telah menghubungi saya. Ada yang bisa saya bantu?
+            </div>
+            <div class="chat-bubble right">
+                Saya tertarik dengan layanan pengembangan web Anda.
+            </div>
+            <div class="chat-bubble">
+                Tentu, saya siap membantu Anda mengembangkan solusi web yang sesuai dengan kebutuhan Anda. Bisa
+                dijelaskan lebih detail tentang proyek yang Anda inginkan?
+            </div>
+        </div>
+        <div class="chat-footer">
+            <input type="text" class="chat-input" placeholder="Ketik pesan...">
+            <button class="chat-send">
+                <i class="fas fa-paper-plane"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Floating Action Button -->
+    <i class="fab fas fa-paper-plane" id="chatButton"></i>
+
+    <script>
+        // Chat Widget Toggle
+        const chatButton = document.getElementById('chatButton');
+        const chatWidget = document.getElementById('chatWidget');
+        let isOpen = false;
+
+        chatButton.addEventListener('click', () => {
+            isOpen = !isOpen;
+            chatWidget.classList.toggle('active', isOpen);
+        });
+
+        // Close chat when clicking outside
+        document.addEventListener('click', (event) => {
+            if (!chatWidget.contains(event.target) && !chatButton.contains(event.target) && isOpen) {
+                isOpen = false;
+                chatWidget.classList.remove('active');
+            }
+        });
+
+        // Send message functionality
+        const chatInput = document.querySelector('.chat-input');
+        const sendButton = document.querySelector('.chat-send');
+        const chatBody = document.querySelector('.chat-body');
+
+        function sendMessage() {
+            const message = chatInput.value.trim();
+            if (message) {
+                // Create and append new message
+                const messageDiv = document.createElement('div');
+                messageDiv.className = 'chat-bubble right';
+                messageDiv.textContent = message;
+                chatBody.appendChild(messageDiv);
+
+                // Clear input
+                chatInput.value = '';
+
+                // Scroll to bottom
+                chatBody.scrollTop = chatBody.scrollHeight;
+
+                // Simulate response after 1 second
+                setTimeout(() => {
+                    const responseDiv = document.createElement('div');
+                    responseDiv.className = 'chat-bubble';
+                    responseDiv.textContent = 'Terima kasih atas pesannya. Saya akan segera menghubungi Anda melalui WhatsApp.';
+                    chatBody.appendChild(responseDiv);
+                    chatBody.scrollTop = chatBody.scrollHeight;
+                }, 1000);
+            }
+        }
+
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                sendMessage();
+            }
+        });
+    </script>
+    <footer>
+        <p>&copy; 2025 Alam Santiko Wibowo</p>
+    </footer>
+</body>
+
+</html>
