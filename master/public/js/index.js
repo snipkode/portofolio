@@ -85,3 +85,7 @@
       }
   }
 
+
+  const trainingCards = document.querySelectorAll('.training-card');
+  const countTraining = document.getElementById("count-training");
+        countTraining.textContent = trainingCards.length;
