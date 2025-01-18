@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coming Soon</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #0f172a;
+            --secondary-color: #1e3a8a;
+            --highlight-color: #2563eb;
+            --text-color: #e5e7eb;
+            --glow-color: rgba(37, 99, 235, 0.7);
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Roboto Mono', monospace;
+            background: var(--primary-color);
+            color: var(--text-color);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        .coming-soon {
+            font-size: 3rem;
+            font-weight: 500;
+            letter-spacing: 0.1rem;
+            text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--glow-color);
+            animation: glow 2s infinite alternate;
+        }
+
+        .tech-text {
+            font-size: 1.2rem;
+            font-weight: 300;
+            margin-top: 1rem;
+            color: var(--secondary-color);
+            animation: typing 4s steps(40, end), blink 0.5s step-end infinite alternate;
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 2px solid var(--highlight-color);
+            display: inline-block;
+            box-sizing: border-box;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 10px var(--highlight-color), 0 0 20px var(--glow-color);
+            }
+            100% {
+                text-shadow: 0 0 20px var(--highlight-color), 0 0 40px var(--glow-color);
+            }
+        }
+
+        @keyframes typing {
+            from {
+                width: 0;
+            }
+            to {
+                width: 100%;
+            }
+        }
+
+        @keyframes blink {
+            from {
+                border-color: transparent;
+            }
+            to {
+                border-color: var(--highlight-color);
+            }
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 2rem;
+            width: 100%;
+            text-align: center;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        .footer a {
+            color: var(--highlight-color);
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="coming-soon">Coming Soon</div>
+        <div class="tech-text">Empowering the Future of Technology...</div>
+    </div>
+    <div class="footer">
+        <p>&copy; 2025 Alam Santiko Wibowo</p>
+    </div>
+</body>
+</html>
