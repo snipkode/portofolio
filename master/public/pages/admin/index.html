@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CMS Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tinymce/6.8.3/tinymce.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50">
+    <!-- Login Screen -->
+    <div id="loginScreen" class="min-h-screen flex items-center justify-center bg-gray-100 px-4 sm:px-0">
+        <div class="max-w-md w-full space-y-8 p-6 sm:p-8 bg-white rounded-lg shadow-lg">
+            <div class="text-center">
+                <h2 class="text-3xl font-extrabold text-gray-900">CMS Login</h2>
+                <p class="mt-2 text-sm text-gray-600">Sign in to your account</p>
+            </div>
+            <form class="mt-8 space-y-6" id="loginForm">
+                <div class="rounded-md shadow-sm -space-y-px">
+                    <div>
+                        <label for="username" class="sr-only">Username</label>
+                        <input id="username" name="username" type="text" required 
+                               class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" 
+                               placeholder="Username">
+                    </div>
+                    <div>
+                        <label for="password" class="sr-only">Password</label>
+                        <input id="password" name="password" type="password" required 
+                               class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm" 
+                               placeholder="Password">
+                    </div>
+                </div>
+                <div>
+                    <button type="submit" 
+                            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                        <span class="absolute left-0 inset-y-0 flex items-center pl-3">
+                            <i class="fas fa-sign-in-alt"></i>
+                        </span>
+                        Sign in
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Main Dashboard -->
+    <div id="dashboard" class="hidden min-h-screen bg-gray-50">
+        <!-- Navigation -->
+        <nav class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex">
+                        <div class="flex-shrink-0 flex items-center">
+                            <span class="text-2xl font-bold text-blue-600">CMS Dashboard</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="flex items-center space-x-4">
+                            <span class="text-gray-700" id="currentUser">Admin</span>
+                            <button id="logoutBtn" class="text-gray-700 hover:text-gray-900">
+                                <i class="fas fa-sign-out-alt"></i> Logout
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Sidebar and Main Content -->
+        <div class="flex">
+            <!-- Sidebar -->
+            <div class="w-64 bg-white shadow-md fixed h-screen hidden lg:block">
+                <div class="p-4">
+                    <h2 class="text-lg font-semibold text-gray-700">Navigation</h2>
+                    <nav class="mt-4 space-y-2">
+                        <a href="#" class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100 active">
+                            <i class="fas fa-edit mr-3"></i>
+                            Content Editor
+                        </a>
+                        <a href="#" class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-images mr-3"></i>
+                            Media Library
+                        </a>
+                        <a href="#" class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-users mr-3"></i>
+                            User Management
+                        </a>
+                        <a href="#" class="flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100">
+                            <i class="fas fa-cog mr-3"></i>
+                            Settings
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Main Content Area -->
+            <div class="ml-0 lg:ml-64 flex-1 p-4 sm:p-8 overflow-auto">
+                <!-- Breadcrumb -->
+                <div class="mb-6">
+                    <nav class="flex" aria-label="Breadcrumb">
+                        <ol class="inline-flex items-center space-x-1 md:space-x-3">
+                            <li class="inline-flex items-center">
+                                <a href="#" class="text-gray-700 hover:text-blue-600">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li>
+                                <div class="flex items-center">
+                                    <i class="fas fa-chevron-right text-gray-400 mx-2"></i>
+                                    <span class="text-gray-500">Content Editor</span>
+                                </div>
+                            </li>
+                        </ol>
+                    </nav>
+                </div>
+
+                <!-- Editor Section -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <!-- Section Selector with Search -->
+                    <div class="mb-6">
+                        <div class="relative">
+                            <select id="sectionSelector" class="block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
+                                <option value="">Select a section to edit...</option>
+                                <optgroup label="Content Sections">
+                                    <option value="hero">Hero Section</option>
+                                    <option value="about">About Section</option>
+                                    <option value="skills">Skills Section</option>
+                                    <option value="education">Education Section</option>
+                                    <option value="goals">Goals Section</option>
+                                    <option value="projects">Projects Section</option>
+                                    <option value="trainings">Trainings Section</option>
+                                    <option value="contact">Contact Section</option>
+                                </optgroup>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Editor Toolbar -->
+                    <div class="mb-4 flex items-center space-x-4">
+                        <button id="saveChanges" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500">
+                            <i class="fas fa-save mr-2"></i> Save Changes
+                        </button>
+                        <button id="previewChanges" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
+                            <i class="fas fa-eye mr-2"></i> Preview
+                        </button>
+                        <button id="resetChanges" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500">
+                            <i class="fas fa-undo mr-2"></i> Reset
+                        </button>
+                    </div>
+
+                    <!-- Editor Area -->
+                    <textarea id="editor"></textarea>
+
+                    <!-- Version History -->
+                    <div class="mt-6">
+                        <h3 class="text-lg font-medium text-gray-900 mb-3">Version History</h3>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-md">
+                                <div>
+                                    <span class="text-sm text-gray-600">Latest Version</span>
+                                    <p class="text-sm text-gray-900">Updated by Admin - 2 minutes ago</p>
+                                </div>
+                                <button class="text-blue-600 hover:text-blue-800">Restore</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 overflow-y-auto px-4 sm:px-0">
+        <div class="flex items-center justify-center min-h-screen p-4">
+            <div class="bg-white rounded-lg shadow-xl max-w-4xl w-full">
+                <div class="flex justify-between items-center p-4 border-b">
+                    <h3 class="text-lg font-medium">Preview Content</h3>
+                    <button id="closePreview" class="text-gray-400 hover:text-gray-500">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="p-6">
+                    <div id="previewContent" class="prose max-w-none"></div>
+                </div>
+                <div class="flex justify-end space-x-3 p-4 border-t">
+                    <button id="closePreviewBtn" class="px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 hover:bg-gray-200 rounded-md">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="fixed bottom-4 right-4 z-50"></div>
+
+    <script>
+        // Initialize TinyMCE with improved configuration
+        tinymce.init({
+            selector: '#editor',
+            height: 500,
+            plugins: [
+                'advlist', 'autolink', 'lists', 'link', 'image', 'charmap', 'preview',
+                'searchreplace', 'visualblocks', 'code', 'fullscreen',
+                'insertdatetime', 'media', 'table', 'help', 'wordcount'
+            ],
+            toolbar: 'undo redo | blocks | ' +
+                'bold italic backcolor | alignleft aligncenter ' +
+                'alignright alignjustify | bullist numlist outdent indent | ' +
+                'removeformat | help',
+            content_style: 'body { font-family: -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif; font-size: 14px; }',
+            menubar: true,
+            branding: false,
+            statusbar: true,
+            resize: true,
+        });
+
+        // Store original content
+        let originalContent = {};
+        let currentContent = {};
+        let isLoggedIn = false;
+
+        // DOM Elements
+        const loginScreen = document.getElementById('loginScreen');
+        const dashboard = document.getElementById('dashboard');
+        const loginForm = document.getElementById('loginForm');
+        const logoutBtn = document.getElementById('logoutBtn');
+        const sectionSelector = document.getElementById('sectionSelector');
+        const saveButton = document.getElementById('saveChanges');
+        const previewButton = document.getElementById('previewChanges');
+        const resetButton = document.getElementById('resetChanges');
+        const previewModal = document.getElementById('previewModal');
+        const closePreviewButton = document.getElementById('closePreview');
+        const closePreviewBtn = document.getElementById('closePreviewBtn');
+        const previewContent = document.getElementById('previewContent');
+
+        // Login Form Handler
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simulate login (replace with actual authentication)
+            if (username === 'admin' && password === 'admin') {
+                isLoggedIn = true;
+                loginScreen.classList.add('hidden');
+                dashboard.classList.remove('hidden');
+                showToast('Login successful!', 'success');
+                document.getElementById('currentUser').textContent = username;
+                loadInitialContent();
+            } else {
+                showToast('Invalid credentials!', 'error');
+            }
+        });
+
+        // Logout Handler
+        logoutBtn.addEventListener('click', () => {
+            isLoggedIn = false;
+            dashboard.classList.add('hidden');
+            loginScreen.classList.remove('hidden');
+            showToast('Logged out successfully!', 'success');
+        });
+
+        // Load initial content
+        function loadInitialContent() {
+            const sections = ['hero', 'about', 'skills', 'education', 'goals', 'projects', 'trainings', 'contact'];
+            sections.forEach(section => {
+                const element = document.getElementById(section);
+                if (element) {
+                    originalContent[section] = element.innerHTML;
+                    currentContent[section] = element.innerHTML;
+                }
+            });
+        }
+
+        // Section selector change handler
+        sectionSelector.addEventListener('change', (e) => {
+            if (e.target.value) {
+                loadSectionContent(e.target.value);
+                showToast(`Loaded ${e.target.value} section`, 'info');
+            }
+        });
+
+        // Load section content into editor
+        function loadSectionContent(sectionId) {
+            tinymce.get('editor').setContent(currentContent[sectionId] || '');
+        }
+
+        // Save changes
+        saveButton.addEventListener('click', () => {
+            const currentSection = sectionSelector.value;
+            if (!currentSection) {
+                showToast('Please select a section first!', 'error');
+                return
+            }
+            // Save the editor content to the currentContent object
+            currentContent[currentSection] = tinymce.get('editor').getContent();
+            showToast(`Changes saved for ${currentSection} section!`, 'success');
+        });
+
+        // Preview changes
+        previewButton.addEventListener('click', () => {
+            const currentSection = sectionSelector.value;
+            if (!currentSection) {
+                showToast('Please select a section first!', 'error');
+                return;
+            }
+            previewContent.innerHTML = currentContent[currentSection] || '';
+            previewModal.classList.remove('hidden');
+        });
+
+        // Close preview modal
+        closePreviewButton.addEventListener('click', () => {
+            previewModal.classList.add('hidden');
+        });
+        closePreviewBtn.addEventListener('click', () => {
+            previewModal.classList.add('hidden');
+        });
+
+        // Reset changes
+        resetButton.addEventListener('click', () => {
+            const currentSection = sectionSelector.value;
+            if (!currentSection) {
+                showToast('Please select a section first!', 'error');
+                return;
+            }
+            tinymce.get('editor').setContent(originalContent[currentSection] || '');
+            currentContent[currentSection] = originalContent[currentSection];
+            showToast(`Changes reset for ${currentSection} section!`, 'info');
+        });
+
+        // Toast notification function
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `toast ${type} fixed bottom-4 right-4 bg-white p-4 rounded-md shadow-lg`;
+            toast.innerHTML = `
+                <div class="flex items-center space-x-2">
+                    <span class="icon">${getIcon(type)}</span>
+                    <span class="message text-sm font-medium">${message}</span>
+                </div>
+            `;
+            document.getElementById('toastContainer').appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Get icon based on notification type
+        function getIcon(type) {
+            switch (type) {
+                case 'success':
+                    return '<i class="fas fa-check-circle text-green-500"></i>';
+                case 'error':
+                    return '<i class="fas fa-times-circle text-red-500"></i>';
+                case 'info':
+                    return '<i class="fas fa-info-circle text-blue-500"></i>';
+                default:
+                    return '<i class="fas fa-bell text-gray-500"></i>';
+            }
+        }
+
+        // Initialize application on load
+        document.addEventListener('DOMContentLoaded', () => {
+            if (isLoggedIn) {
+                loginScreen.classList.add('hidden');
+                dashboard.classList.remove('hidden');
+                loadInitialContent();
+            }
+        });
+    </script>
+</body>
+</html>
