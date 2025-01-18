@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YouTube Playlist Clone</title>
+    <title>Video Playlists</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="./assets/styles.css"/>
 </head>
@@ -20,27 +20,16 @@
         </div>
     </main>
 
-    <div id="videoModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center hidden">
-        <div class="modal-content bg-gray-900 rounded-lg p-4 max-w-4xl w-full mx-4">
-            <div class="relative">
-                <div id="player" class="aspect-w-16 aspect-h-9">
-                    <!-- iframe will be inserted here -->
-                </div>
-                <button onclick="closeModal()" aria-label="Close video"
-                    class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full p-2 hover:bg-red-700">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M6 18L18 6M6 6l12 12" />
-                    </svg>
-                </button>
-            </div>
-            <div class="mt-4">
-                <h2 id="videoTitle" class="text-white text-xl font-bold"></h2>
+    <div id="videoModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="modal-content bg-white p-4 rounded-lg relative max-w-2xl w-full">
+            <button id="closeModalButton" class="absolute top-2 right-2 text-black">X</button>
+            <button id="fullscreenButton" class="absolute top-2 left-2 text-black">🔲</button>
+            <h3 id="videoTitle" class="text-white mb-3"></h3>
+            <div id="player" class="w-full h-96">
             </div>
         </div>
     </div>
-
+    
     <script src="./assets/index.js"></script>
 </body>
 
