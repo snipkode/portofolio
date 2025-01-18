@@ -40,6 +40,11 @@
 /* Hero Section with Avatar */
 .hero {
     background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background-image: url(../images/background.svg);
+    background-repeat: no-repeat;
+    background-size: 95%;
+    background-position-y: 50%;
+    background-position-x: center;
     color: var(--light-text);
     padding: 4rem 0;
     text-align: center;

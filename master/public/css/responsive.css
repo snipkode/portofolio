@@ -168,6 +168,9 @@ section {
 
 /* Desktop (1025px and above) */
 @media (min-width: 1025px) {
+    :root {
+        --container-max-width: 980px;
+    }
     .container {
         padding: 25px;
     }
@@ -186,12 +189,12 @@ section {
     }
     
     .skills-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--grid-gap-lg);
     }
     
     .training-grid {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
         gap: var(--grid-gap-lg);
     }
     
