@@ -1,18 +1,206 @@
-@media (max-width: 768px) {
+/* CSS Custom Properties for consistent values */
+:root {
+    --container-max-width: 1440px;
+    --spacing-xs: 0.75rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.25rem;
+    --spacing-lg: 1.75rem;
+    --spacing-xl: 2rem;
+    
+    --grid-gap-sm: 1rem;
+    --grid-gap-md: 1.5rem;
+    --grid-gap-lg: 2rem;
+    
+    /* Add smooth transitions for responsive changes */
+    --transition-speed: 0.3s;
+}
+
+/* Base styles */
+.container {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+section {
+    transition: padding var(--transition-speed) ease;
+}
+
+.hero h1 {
+    transition: font-size var(--transition-speed) ease;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.avatar-container {
+    border-radius: 50%;
+    overflow: hidden;
+    transition: all var(--transition-speed) ease;
+}
+
+.skills-grid,
+.training-grid {
+    width: 100%;
+    transition: gap var(--transition-speed) ease;
+}
+
+.chat-widget {
+    margin: 0 auto;
+    transition: width var(--transition-speed) ease;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.chat-header img {
+    object-fit: cover;
+    border-radius: 50%;
+    transition: all var(--transition-speed) ease;
+}
+
+/* Mobile Portrait (up to 480px) */
+@media (max-width: 480px) {
     .container {
         padding: 10px;
     }
-
+    
     section {
-        padding: 1rem;
+        padding: var(--spacing-xs);
     }
-
+    
     .hero h1 {
-        font-size: 2rem;
+        font-size: clamp(1.5rem, 5vw, 1.8rem);
     }
+    
+    .avatar-container {
+        width: 140px;
+        height: 140px;
+    }
+    
+    .skills-grid,
+    .training-grid {
+        grid-template-columns: 1fr;
+        gap: var(--grid-gap-sm);
+    }
+    
+    .chat-widget {
+        width: min(90%, 400px);
+    }
+    
+    .chat-header img {
+        width: 35px;
+        height: 35px;
+    }
+}
 
+/* Mobile Landscape (481px - 768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+    .container {
+        padding: 12px;
+    }
+    
+    section {
+        padding: var(--spacing-sm);
+    }
+    
+    .hero h1 {
+        font-size: clamp(1.8rem, 6vw, 2rem);
+    }
+    
     .avatar-container {
         width: 150px;
         height: 150px;
+    }
+    
+    .skills-grid,
+    .training-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--grid-gap-sm);
+    }
+    
+    .chat-widget {
+        width: min(80%, 500px);
+    }
+    
+    .chat-header img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Tablet (769px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .container {
+        padding: 18px;
+    }
+    
+    section {
+        padding: var(--spacing-md);
+    }
+    
+    .hero h1 {
+        font-size: clamp(2rem, 7vw, 2.5rem);
+    }
+    
+    .avatar-container {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--grid-gap-md);
+    }
+    
+    .training-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--grid-gap-md);
+    }
+    
+    .chat-widget {
+        width: min(70%, 600px);
+    }
+    
+    .chat-header img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+/* Desktop (1025px and above) */
+@media (min-width: 1025px) {
+    .container {
+        padding: 25px;
+    }
+    
+    section {
+        padding: var(--spacing-lg);
+    }
+    
+    .hero h1 {
+        font-size: clamp(2.5rem, 8vw, 3rem);
+    }
+    
+    .avatar-container {
+        width: 220px;
+        height: 220px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: var(--grid-gap-lg);
+    }
+    
+    .training-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: var(--grid-gap-lg);
+    }
+    
+    .chat-widget {
+        width: min(60%, 800px);
+    }
+    
+    .chat-header img {
+        width: 50px;
+        height: 50px;
     }
 }
