@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Playlists</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles.css"/>
+</head>
+
+<body class="bg-gray-900 min-h-screen p-4 md:p-8">
+    <main class="max-w-6xl mx-auto">
+        <div class="video-count text-white py-3 mb-4">
+            <span id="videoCount"></span>
+        </div>
+
+        <div id="playlist" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Videos will be inserted here -->
+        </div>
+    </main>
+
+    <div id="videoModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div class="modal-content bg-white p-4 rounded-lg relative max-w-2xl w-full">
+            <button id="closeModalButton" class="absolute top-2 right-2 text-black">X</button>
+            <button id="fullscreenButton" class="absolute top-2 left-2 text-black">🔲</button>
+            <h3 id="videoTitle" class="text-white mb-3"></h3>
+            <div id="player" class="w-full h-96">
+            </div>
+        </div>
+    </div>
+    
+    <script src="./assets/index.js"></script>
+</body>
+
+</html>
