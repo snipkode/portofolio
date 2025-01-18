@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Playlist Clone</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./assets/styles.css"/>
+</head>
+
+<body class="bg-gray-900 min-h-screen p-4 md:p-8">
+    <main class="max-w-6xl mx-auto">
+        <div class="video-count text-white py-3 mb-4">
+            <span id="videoCount"></span>
+        </div>
+
+        <div id="playlist" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            <!-- Videos will be inserted here -->
+        </div>
+    </main>
+
+    <div id="videoModal" class="modal-backdrop fixed inset-0 z-50 flex items-center justify-center hidden">
+        <div class="modal-content bg-gray-900 rounded-lg p-4 max-w-4xl w-full mx-4">
+            <div class="relative">
+                <div id="player" class="aspect-w-16 aspect-h-9">
+                    <!-- iframe will be inserted here -->
+                </div>
+                <button onclick="closeModal()" aria-label="Close video"
+                    class="absolute -top-2 -right-2 bg-red-600 text-white rounded-full p-2 hover:bg-red-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                        stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div class="mt-4">
+                <h2 id="videoTitle" class="text-white text-xl font-bold"></h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="./assets/index.js"></script>
+</body>
+
+</html>

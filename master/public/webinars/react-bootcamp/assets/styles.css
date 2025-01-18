@@ -1,0 +1,58 @@
+.modal-backdrop {
+    backdrop-filter: blur(4px);
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.active {
+    opacity: 1;
+}
+
+.modal-content {
+    transform: scale(0.9);
+    opacity: 0;
+    transition: all 0.3s ease;
+}
+
+.modal-content.active {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.video-duration {
+    background-color: rgba(0, 0, 0, 0.8);
+    font-size: 0.8rem;
+    padding: 1px 4px;
+    border-radius: 2px;
+}
+
+.playlist-item {
+    transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.playlist-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(4px);
+}
+
+.video-count {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
