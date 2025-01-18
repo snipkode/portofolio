@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private AI Workshop</title>
+    <meta name="description" content="Webinar eksklusif untuk menciptakan Private AI dalam 1 jam tanpa pengalaman coding. Cepat, hemat biaya, dan mudah!">
+    <meta name="keywords" content="webinar AI, Private AI, belajar AI, teknologi AI, solusi AI">
+    <meta name="author" content="Private AI Workshop">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .float-animation {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .countdown-item {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 10px;
+            padding: 1rem;
+            margin: 0.5rem;
+            min-width: 80px;
+            text-align: center;
+        }
+
+        .testimonial-card {
+            transition: transform 0.3s ease;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .pricing-card {
+            transition: transform 0.3s ease;
+        }
+
+        .pricing-card:hover {
+            transform: scale(1.05);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+        .problem-card {
+            border-left: 4px solid #667eea;
+        }
+
+        .solution-card {
+            border-left: 4px solid #48bb78;
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .accordion-content.open {
+            max-height: 200px;
+            /* Sesuaikan dengan tinggi maksimum konten */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100">
+    <!-- Hero Section -->
+    <header class="gradient-bg text-white min-h-screen flex items-center">
+        <div class="container mx-auto px-4 py-16">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6 float-animation">
+                    Ciptakan Private AI Sendiri dalam 1 Jam! 🚀
+                </h1>
+                <p class="text-xl md:text-2xl mb-8">
+                    Tak perlu jadi ahli coding. Dalam waktu 1 jam, Anda bisa membuat solusi AI pribadi yang aman,
+                    canggih, dan hemat biaya!
+                </p>
+                <button
+                    class="bg-white text-purple-700 px-8 py-4 rounded-full text-lg font-bold hover:bg-purple-100 transition-colors duration-300">
+                    Daftar Sekarang!
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Video Preview Section -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8">Lihat Preview Workshop Kami</h2>
+            <div class="max-w-4xl mx-auto">
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/YOUR_VIDEO_ID?rel=0&autoplay=0&controls=1"
+                        loading="lazy"
+                        title="Private AI Workshop Preview"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Kenapa Anda Harus Ikut Webinar Ini?</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="p-6 bg-white rounded-lg shadow-lg text-center">
+                    <div class="text-4xl mb-4">🔒</div>
+                    <h3 class="text-xl font-bold mb-2">Private & Aman</h3>
+                    <p>AI yang Anda kendalikan sepenuhnya tanpa pihak ketiga.</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-lg text-center">
+                    <div class="text-4xl mb-4">⚡</div>
+                    <h3 class="text-xl font-bold mb-2">Cepat & Mudah</h3>
+                    <p>Cukup 1 jam untuk menciptakan AI pribadi.</p>
+                </div>
+                <div class="p-6 bg-white rounded-lg shadow-lg text-center">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-xl font-bold mb-2">Hemat Biaya</h3>
+                    <p>Pelajari teknologi bernilai jutaan dengan harga terjangkau.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem & Solution Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+                <div>
+                    <h2 class="text-2xl font-bold mb-8">Masalah yang Umum Dihadapi</h2>
+                    <div class="space-y-6">
+                        <div class="p-6 bg-red-50 problem-card rounded-lg">
+                            <h3 class="font-bold mb-2">Keamanan Data Tidak Terjamin</h3>
+                            <p>Layanan AI publik sering tidak aman.</p>
+                        </div>
+                        <div class="p-6 bg-red-50 problem-card rounded-lg">
+                            <h3 class="font-bold mb-2">Biaya Tinggi</h3>
+                            <p>Pengembangan AI mahal dan rumit.</p>
+                        </div>
+                        <div class="p-6 bg-red-50 problem-card rounded-lg">
+                            <h3 class="font-bold mb-2">Waktu Belajar Lama</h3>
+                            <p>Butuh waktu berbulan-bulan untuk belajar dari awal.</p>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="text-2xl font-bold mb-8">Solusi yang Kami Tawarkan</h2>
+                    <div class="p-6 bg-green-50 solution-card rounded-lg">
+                        <h3 class="font-bold mb-4">Webinar Eksklusif: Private AI dalam 1 Jam</h3>
+                        <p class="mb-4">Webinar ini memberikan langkah praktis, sederhana, dan efisien untuk menciptakan
+                            AI pribadi dalam 1 jam saja.</p>
+                        <ul class="space-y-2">
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                                </svg>
+                                Panduan langkah demi langkah
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                                </svg>
+                                Implementasi cepat
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                    <path
+                                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" />
+                                </svg>
+                                Hemat biaya
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What You'll Get -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Keunggulan Webinar Ini</h2>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-4xl mb-4">📚</div>
+                    <h3 class="font-bold mb-2">Panduan Step-by-Step</h3>
+                    <p>Dari ahli AI berpengalaman langsung ke tangan Anda</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-4xl mb-4">🎯</div>
+                    <h3 class="font-bold mb-2">Template Siap Pakai</h3>
+                    <p>Template lengkap untuk membangun Private AI</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-4xl mb-4">🎥</div>
+                    <h3 class="font-bold mb-2">Rekaman & E-book</h3>
+                    <p>Akses seumur hidup ke materi pembelajaran</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <div class="text-4xl mb-4">👥</div>
+                    <h3 class="font-bold mb-2">Grup Eksklusif</h3>
+                    <p>Diskusi lanjutan dengan komunitas</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">Apa Kata Mereka?</h2>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="testimonial-card bg-purple-50 p-6 rounded-lg shadow-lg">
+                    <div class="text-purple-600 text-4xl mb-4">"</div>
+                    <p class="text-gray-700 mb-4">Saya tak pernah berpikir bisa membuat AI sendiri secepat ini. Webinar
+                        ini sangat membantu!</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center">
+                            <span class="text-purple-700 font-bold">AS</span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold">Andi Surya</div>
+                            <div class="text-sm text-gray-600">CEO Tech Startup</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card bg-purple-50 p-6 rounded-lg shadow-lg">
+                    <div class="text-purple-600 text-4xl mb-4">"</div>
+                    <p class="text-gray-700 mb-4">Sekarang bisnis saya memiliki solusi AI yang aman dan murah!</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center">
+                            <span class="text-purple-700 font-bold">RD</span>
+                        </div>
+                        <div class="ml-4">
+                            <div class="font-bold">Rini Dewi</div>
+                            <div class="text-sm text-gray-600">Pemilik UMKM</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Timer -->
+    <section class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-4 text-center">
+            <h3 class="text-2xl mb-6">Waktu terbatas! Penawaran Early Bird berakhir dalam:</h3>
+            <div class="flex justify-center" id="countdown">
+                <div class="countdown-item">
+                    <span class="text-3xl font-bold" id="days">00</span>
+                    <div class="text-sm">Hari</div>
+                </div>
+                <div class="countdown-item">
+                    <span class="text-3xl font-bold" id="hours">00</span>
+                    <div class="text-sm">Jam</div>
+                </div>
+                <div class="countdown-item">
+                    <span class="text-3xl font-bold" id="minutes">00</span>
+                    <div class="text-sm">Menit</div>
+                </div>
+                <div class="countdown-item">
+                    <span class="text-3xl font-bold" id="seconds">00</span>
+                    <div class="text-sm">Detik</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl mx-auto">
+                <div class="pricing-card bg-purple-100 p-8 rounded-2xl text-center">
+                    <div class="text-gray-500 line-through mb-2">Harga Normal: Rp 25.000.000</div>
+                    <div class="text-3xl font-bold text-purple-700 mb-4">Harga Early Bird: Rp 750.000</div>
+                    <button
+                        class="bg-purple-600 text-white px-8 py-4 rounded-full text-lg font-bold hover:bg-purple-700 transition-colors duration-300">
+                        Daftar Sekarang - Hemat 70%!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12">FAQ</h2>
+            <div class="max-w-3xl mx-auto space-y-6">
+                <details class="bg-white p-6 rounded-lg shadow-md" name="faqs" open>
+                    <summary class="font-bold mb-2">Apakah saya harus punya pengalaman coding?</summary>
+                    <p>Tidak, materi dirancang untuk pemula.</p>
+                </details>
+                <details class="bg-white p-6 rounded-lg shadow-md" name="faqs">
+                    <summary class="font-bold mb-2">Apa yang saya butuhkan sebelum webinar?</summary>
+                    <p>Laptop dengan koneksi internet.</p>
+                </details>
+                <details class="bg-white p-6 rounded-lg shadow-md" name="faqs">
+                    <summary class="font-bold mb-2">Apakah ada dukungan setelah webinar?</summary>
+                    <p>Ya, Anda akan diundang ke grup diskusi eksklusif.</p>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="gradient-bg text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <div class="mb-4">
+                <a href="#" class="mx-2 hover:text-purple-200">Instagram</a>
+                <a href="#" class="mx-2 hover:text-purple-200">Twitter</a>
+                <a href="#" class="mx-2 hover:text-purple-200">LinkedIn</a>
+            </div>
+            <p class="text-sm opacity-75">
+                © 2025 Private AI Workshop. Hasil dapat bervariasi tergantung usaha peserta.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        // Countdown Timer
+        function initializeCountdown(targetDate) {
+            function updateCountdown() {
+                const currentDate = new Date();
+                const difference = targetDate - currentDate;
+
+                if (difference <= 0) {
+                    document.getElementById('countdown').innerHTML =
+                        "<span class='text-xl font-bold'>Waktu Penawaran Telah Habis</span>";
+                    return;
+                }
+
+                const days = Math.floor(difference / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((difference % (1000 * 60)) / 1000);
+
+                document.getElementById('days').innerText = String(days).padStart(2, '0');
+                document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+                document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+                document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+            }
+
+            setInterval(updateCountdown, 1000);
+            updateCountdown();
+        }
+
+        // Initialize with specific target date
+        const targetDate = new Date('2025-02-01T00:00:00'); // Replace with your specific date and time
+        initializeCountdown(targetDate);
+
+        // Accordion
+        const accordions = document.querySelectorAll('.accordion');
+        accordions.forEach(acc => {
+            acc.addEventListener('click', () => {
+                const content = acc.querySelector('.accordion-content');
+                content.classList.toggle('open');
+            });
+        });
+
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
