@@ -96,10 +96,6 @@ function toggleFullscreen() {
     }
 }
 
-// Add event listener to the fullscreen button
-const fullscreenButton = document.getElementById("fullscreenButton");
-fullscreenButton.addEventListener("click", toggleFullscreen);
-
 
   const trainingCards = document.querySelectorAll('.training-card');
   const countTraining = document.getElementById("count-training");
