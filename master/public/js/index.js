@@ -73,17 +73,32 @@
       iframe.src = ""; // Hentikan iframe
   }
 
-  // Fungsi toggle fullscreen
-  function toggleFullscreen() {
-      const iframe = document.getElementById("popup-iframe");
-      if (!document.fullscreenElement) {
-          iframe.requestFullscreen().catch(err => {
-              console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
-          });
-      } else {
-          document.exitFullscreen();
-      }
-  }
+// Fungsi toggle fullscreen
+function toggleFullscreen() {
+    const iframe = document.getElementById("popup-iframe");
+
+    // Check if iframe supports fullscreen
+    if (iframe.requestFullscreen) {
+        // Request fullscreen for iframe
+        if (!document.fullscreenElement) {
+            iframe.requestFullscreen().catch(err => {
+                console.error(`Error attempting to enable fullscreen mode: ${err.message}`);
+            });
+        } else {
+            document.exitFullscreen();
+        }
+    } else if (iframe.mozRequestFullScreen) { // Firefox
+        iframe.mozRequestFullScreen();
+    } else if (iframe.webkitRequestFullscreen) { // Chrome, Safari, Opera
+        iframe.webkitRequestFullscreen();
+    } else if (iframe.msRequestFullscreen) { // IE/Edge
+        iframe.msRequestFullscreen();
+    }
+}
+
+// Add event listener to the fullscreen button
+const fullscreenButton = document.getElementById("fullscreenButton");
+fullscreenButton.addEventListener("click", toggleFullscreen);
 
 
   const trainingCards = document.querySelectorAll('.training-card');
