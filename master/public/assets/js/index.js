@@ -22,30 +22,40 @@
   const chatBody = document.querySelector('.chat-body');
 
   function sendMessage() {
-      const message = chatInput.value.trim();
-      if (message) {
-          // Create and append new message
-          const messageDiv = document.createElement('div');
-          messageDiv.className = 'chat-bubble right';
-          messageDiv.textContent = message;
-          chatBody.appendChild(messageDiv);
+    const message = chatInput.value.trim(); // Ambil input dari chatInput
+    if (message) {
+        // Create and append new message
+        const messageDiv = document.createElement('div');
+        messageDiv.className = 'chat-bubble right';
+        messageDiv.textContent = message;
+        chatBody.appendChild(messageDiv);
 
-          // Clear input
-          chatInput.value = '';
+        // Clear input
+        chatInput.value = '';
 
-          // Scroll to bottom
-          chatBody.scrollTop = chatBody.scrollHeight;
+        // Scroll to bottom
+        chatBody.scrollTop = chatBody.scrollHeight;
 
-          // Simulate response after 1 second
-          setTimeout(() => {
-              const responseDiv = document.createElement('div');
-              responseDiv.className = 'chat-bubble';
-              responseDiv.textContent = 'Terima kasih atas pesannya. Saya akan segera menghubungi Anda melalui WhatsApp.';
-              chatBody.appendChild(responseDiv);
-              chatBody.scrollTop = chatBody.scrollHeight;
-          }, 1000);
-      }
-  }
+        // Simulate response after 1 second
+        setTimeout(() => {
+            const responseDiv = document.createElement('div');
+            responseDiv.className = 'chat-bubble';
+            responseDiv.textContent = 'Terima kasih atas pesannya. Saya akan segera menghubungi Anda melalui WhatsApp.';
+            chatBody.appendChild(responseDiv);
+            chatBody.scrollTop = chatBody.scrollHeight;
+
+            // Redirect to WhatsApp with message from chatInput
+            const whatsappNumber = "082125497764";
+            const whatsappMessage = `Pesan dari website ${window.location.href} : ${message}`;
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(whatsappMessage)}`;
+
+            // Open WhatsApp link in a new tab
+            window.open(whatsappURL, '_blank');
+        }, 1000);
+    }
+}
+
+
 
   sendButton.addEventListener('click', sendMessage);
   chatInput.addEventListener('keypress', (e) => {
