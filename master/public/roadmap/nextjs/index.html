@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Next.js Learning Roadmap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      background: linear-gradient(to bottom right, #1a202c, #2d3748);
+      background-attachment: fixed;
+    }
+    .tech-background {
+      background-image: url('https://source.unsplash.com/1920x1080/?technology,code');
+      background-size: cover;
+      background-position: center;
+      filter: brightness(0.7);
+    }
+  </style>
+</head>
+<body class="text-gray-200">
+  <!-- Header Section -->
+  <header class="tech-background text-white relative">
+    <div class="container mx-auto px-6 py-24 text-center relative z-10">
+      <h1 class="text-4xl font-extrabold">Roadmap Belajar Next.js</h1>
+      <p class="mt-4 text-lg">Panduan lengkap dari pemula hingga mahir untuk menguasai Next.js.</p>
+    </div>
+    <div class="absolute inset-0 bg-blue-600 opacity-50"></div>
+  </header>
+
+  <!-- Roadmap Section -->
+  <section class="container mx-auto px-6 py-12">
+    <h2 class="text-3xl font-bold text-center text-white mb-8">Tahapan Belajar</h2>
+    <div class="space-y-8">
+      <!-- Section 1 -->
+      <div class="bg-white text-gray-800 shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">1. Pengenalan Dasar</h3>
+        <ul class="list-disc list-inside space-y-2">
+          <li><strong>Apa itu Next.js</strong>: Framework React untuk rendering server-side dan static-site generation.</li>
+          <li><strong>Mengapa Memilih Next.js</strong>: SEO-friendly, performa tinggi, dan mendukung fitur modern seperti API routes.</li>
+          <li><strong>Persiapan Lingkungan</strong>: Install Node.js & npm/yarn.
+            <pre class="bg-gray-100 p-4 rounded text-sm"><code>npx create-next-app@latest<br>cd nama-proyek<br>npm run dev</code></pre>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 2 -->
+      <div class="bg-white text-gray-800 shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">2. Struktur Folder dan File</h3>
+        <ul class="list-disc list-inside space-y-2">
+          <li><strong>Penjelasan Struktur Dasar</strong>:<br>
+            <code>pages/</code>: Routing berbasis file.<br>
+            <code>public/</code>: File statis (gambar, font, dll).<br>
+            <code>styles/</code>: Styling global atau modular.
+          </li>
+          <li><strong>File Penting</strong>: <code>next.config.js</code>, <code>_app.js</code>, <code>_document.js</code>.</li>
+        </ul>
+      </div>
+
+      <!-- Section 3 -->
+      <div class="bg-white text-gray-800 shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">3. Dasar-Dasar Next.js</h3>
+        <ul class="list-disc list-inside space-y-2">
+          <li><strong>Routing dan Navigasi</strong>: Routing otomatis di folder <code>pages/</code>.</li>
+          <li><strong>Dynamic Routing</strong>:<br>
+            <pre class="bg-gray-100 p-4 rounded text-sm"><code>// pages/[id].js
+export async function getServerSideProps({ params }) {
+  return { props: { id: params.id } };
+}</code></pre>
+          </li>
+          <li><strong>Rendering</strong>: CSR, SSR, SSG, ISR.</li>
+        </ul>
+      </div>
+
+      <!-- Section 4 -->
+      <div class="bg-white text-gray-800 shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">4. API Routes</h3>
+        <ul class="list-disc list-inside space-y-2">
+          <li><strong>Membuat API dengan Next.js</strong>: Folder <code>pages/api</code>.</li>
+          <li><strong>Contoh Endpoint API</strong>:
+            <pre class="bg-gray-100 p-4 rounded text-sm"><code>export default function handler(req, res) {
+  res.status(200).json({ message: "Hello World" });
+}</code></pre>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Section 5 -->
+      <div class="bg-white text-gray-800 shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">5. Data Fetching</h3>
+        <ul class="list-disc list-inside space-y-2">
+          <li><strong>Server-Side Rendering (SSR)</strong>: Fungsi <code>getServerSideProps</code>.</li>
+          <li><strong>Static-Site Generation (SSG)</strong>: Fungsi <code>getStaticProps</code> & <code>getStaticPaths</code>.</li>
+          <li><strong>Client-Side Fetching</strong>: Menggunakan <code>fetch</code> atau library seperti Axios/SWR.</li>
+        </ul>
+      </div>
+
+      <!-- Section 6 -->
+      <div class="bg-white text-gray-800 shadow-md rounded-lg p-6">
+        <h3 class="text-xl font-semibold mb-4">6. Styling</h3>
+        <ul class="list-disc list-inside space-y-2">
+          <li><strong>CSS Modules</strong>: Penamaan unik untuk komponen.<br>
+            <pre class="bg-gray-100 p-4 rounded text-sm"><code>import styles from './Home.module.css';</code></pre>
+          </li>
+          <li><strong>Styled JSX</strong> (default Next.js).</li>
+          <li><strong>Integrasi Framework CSS</strong>: Tailwind CSS atau Bootstrap.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Call to Action -->
+  <section class="bg-blue-600 text-white">
+    <div class="container mx-auto px-6 py-12 text-center">
+      <h2 class="text-2xl font-bold">Siap Belajar Next.js?</h2>
+      <p class="mt-4 text-lg">Mulailah perjalanan Anda sekarang dengan membuat proyek kecil untuk mengaplikasikan konsep-konsep di atas.</p>
+      <a href="/pages/react-bootcamp" class="inline-block mt-6 bg-white text-blue-600 font-bold py-3 px-6 rounded-lg hover:bg-gray-200">Mulai Sekarang</a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white">
+    <div class="container mx-auto px-6 py-6 text-center">
+      <p>&copy; 2025 Next.js Learning Roadmap. All Rights Reserved.</p>
+    </div>
+  </footer>
+</body>
+</html>
