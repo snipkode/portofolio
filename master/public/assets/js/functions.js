@@ -1,4 +1,4 @@
-import { supabase } from "./config";
+import { supabase } from "./config.js";
 
 // 3️⃣ Function: Fetch Users
 async function getUsers() {
