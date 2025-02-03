@@ -68,4 +68,18 @@ async function deleteUser() {
 // Fetch data saat halaman dimuat
 getUsers();
 
-export { addUser, updateUser, deleteUser, getUsers };
+
+async function signIn(email, password) {
+    const { user, error } = await supabase.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
+
+    if (error) {
+        console.error(error);
+        return;
+    }
+    
+}
+
+export { addUser, updateUser, deleteUser, getUsers, signIn };

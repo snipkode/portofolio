@@ -7,7 +7,7 @@
 </head>
 <body>
 
-    <h1>Supabase + JavaScript Vanilla</h1>
+    <h1 id="user-info">Supabase + JavaScript Vanilla</h1>
 
     <button onclick="getUsers()">🔍 Fetch Users</button>
     <button onclick="addUser()">➕ Add User</button>
@@ -18,12 +18,19 @@
 
     <script type="module" src="../assets/js/config.js"></script>
     <script type="module">
-        import { getUsers, addUser, updateUser, deleteUser } from '../assets/js/functions.js';
+        import { getUsers, addUser, updateUser, deleteUser, signIn } from '../assets/js/functions.js';
+        import { checkUserSession, signOut } from '../assets/js/auth.js';
 
         window.getUsers = getUsers;
         window.addUser = addUser;
         window.updateUser = updateUser;
         window.deleteUser = deleteUser;
+
+        checkUserSession();
+        // signOut();
+
+        signIn("alamhafidz61@gmail.com", "123456");
+        
     </script>
 </body>
 </html>
