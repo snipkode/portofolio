@@ -67,3 +67,5 @@ async function deleteUser() {
 
 // Fetch data saat halaman dimuat
 getUsers();
+
+export { addUser, updateUser, deleteUser, getUsers };

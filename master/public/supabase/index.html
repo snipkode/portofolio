@@ -16,7 +16,14 @@
 
     <ul id="user-list"></ul>
 
-    <script async type="module" src="./assets/js/config.js"></script>
-    <script async type="module" src="./assets/js/functions.js"></script>
+    <script type="module" src="../assets/js/config.js"></script>
+    <script type="module">
+        import { getUsers, addUser, updateUser, deleteUser } from '../assets/js/functions.js';
+
+        window.getUsers = getUsers;
+        window.addUser = addUser;
+        window.updateUser = updateUser;
+        window.deleteUser = deleteUser;
+    </script>
 </body>
 </html>
